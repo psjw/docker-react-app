@@ -1,15 +1,15 @@
 sudo: required
 
-language : generic
+language: generic
 
 services:
   - docker
 
-before_install :
+before_install:
   - echo "start creating an image with dockerfile"
   - docker build -t dlrudtn108/docker-react-app -f Dockerfile.dev .
 
-script:
+script: 
   - docker run -e CI=true dlrudtn108/docker-react-app npm run test -- --coverage
 
 after_success:
